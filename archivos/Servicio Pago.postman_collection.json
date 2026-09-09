@@ -1,0 +1,118 @@
+{
+  "info": {
+    "_postman_id": "3fdd0982-953b-43d9-94d5-c41591688cf3",
+    "name": "Servicio Pago",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "12269511",
+    "_collection_link": "https://go.postman.co/collection/12269511-3fdd0982-953b-43d9-94d5-c41591688cf3?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "CreaPago",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"concepto\": \"Servicios Plomeria\",\n  \"cantidad\": 2,\n  \"pagador\": \"Omar Toxqui\",\n  \"receptor\": \"Juan Perez\",\n  \"monto\": 500.75,\n  \"status\": \"PENDIENTE\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{pagoService}}/v1/pagos",
+          "host": [
+            "{{pagoService}}"
+          ],
+          "path": [
+            "v1",
+            "pagos"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "ConsutlaPago",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{pagoService}}/v1/pagos/2",
+          "host": [
+            "{{pagoService}}"
+          ],
+          "path": [
+            "v1",
+            "pagos",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Actualiza StatusPago",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "accept",
+            "value": "*/*"
+          }
+        ],
+        "url": {
+          "raw": "{{pagoService}}/v1/pagos/2?nuevoStatus=COMPLETADO",
+          "host": [
+            "{{pagoService}}"
+          ],
+          "path": [
+            "v1",
+            "pagos",
+            "2"
+          ],
+          "query": [
+            {
+              "key": "nuevoStatus",
+              "value": "COMPLETADO"
+            }
+          ]
+        },
+        "description": "Generated from cURL: curl -X 'PATCH' \\\n  'http://localhost:8080/v1/pagos/1/status?nuevoStatus=PROGRESO' \\\n  -H 'accept: */*'"
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "pagoService",
+      "value": ""
+    }
+  ]
+}
